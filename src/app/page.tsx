@@ -1,200 +1,196 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Briefcase, MapPin, Search, Zap, Shield, 
   TrendingUp, Users, Check, ArrowRight, 
   MessageSquare, Star, Globe, Smartphone, PlayCircle,
-  Moon, Sun 
+  Menu, X, Bell
 } from 'lucide-react';
 import Link from 'next/link';
 
-export default function EnterpriseLanding() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Auto-upgrade: Theme Engine (Skill #14)
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour < 6 || hour > 18) setIsDarkMode(true);
-  }, []);
+export default function NatalVagasNormal() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className={`min-h-screen font-sans selection:bg-blue-100 transition-colors duration-500 ${
-      isDarkMode ? 'bg-slate-950 text-white' : 'bg-white text-slate-900'
-    }`}>
+    <div className="min-h-screen bg-gray-50 text-slate-900 font-sans">
       
-      {/* Premium Navigation - Integrated Dark Mode */}
-      <nav className={`fixed top-0 w-full z-[100] backdrop-blur-md border-b transition-colors ${
-        isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-white/80 border-slate-100'
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-blue-600 p-2 rounded-xl group-hover:rotate-6 transition-transform shadow-lg shadow-blue-200">
-              <Briefcase className="w-6 h-6 text-white" />
-            </div>
-            <span className={`text-2xl font-black tracking-tighter uppercase ${
-              isDarkMode ? 'text-white' : 'text-slate-900'
-            }`}>Natal<span className="text-blue-600">Vagas</span></span>
-          </Link>
-
-          <div className="hidden lg:flex items-center gap-10">
-            {['Buscar Vagas', 'Empresas', 'Mapa GPS', 'Cursos'].map((item) => (
-              <Link key={item} href="#" className={`text-[11px] font-black uppercase tracking-[0.2em] transition-colors ${
-                isDarkMode ? 'text-slate-400 hover:text-blue-400' : 'text-slate-500 hover:text-blue-600'
-              }`}>
-                {item}
-              </Link>
-            ))}
+      {/* Header Padrao (Estilo SINE/Indeed) */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-[100]">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="bg-blue-600 p-1.5 rounded-lg text-white">
+                <Briefcase className="w-6 h-6" />
+              </div>
+              <span className="text-xl font-bold tracking-tight text-blue-900">NATAL<span className="text-blue-600">VAGAS</span></span>
+            </Link>
+            
+            <nav className="hidden md:flex items-center gap-6">
+              <Link href="#" className="text-sm font-semibold text-gray-600 hover:text-blue-600">Vagas</Link>
+              <Link href="#" className="text-sm font-semibold text-gray-600 hover:text-blue-600">Cursos</Link>
+              <Link href="/mapa" className="text-sm font-semibold text-gray-600 hover:text-blue-600">Mapa</Link>
+            </nav>
           </div>
 
-          <div className="flex items-center gap-6">
-            <button 
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2 rounded-xl border transition-all ${
-                isDarkMode ? 'border-slate-800 text-yellow-400' : 'border-slate-200 text-slate-400'
-              }`}
-            >
-              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-            <Link href="/admin" className="text-xs font-bold text-slate-400 hover:text-blue-600 uppercase tracking-widest">Acesso RH</Link>
-            <Link href="/kyc" className="bg-blue-600 text-white px-6 py-3 rounded-2xl text-xs font-black hover:bg-blue-700 hover:scale-105 transition-all shadow-xl shadow-blue-100 uppercase tracking-widest">
-              Começar Agora
+          <div className="flex items-center gap-4">
+            <Link href="/admin" className="text-sm font-semibold text-gray-500 hover:text-gray-900 hidden sm:block">Empresas / RH</Link>
+            <Link href="/kyc" className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-700 transition-all">
+              Entrar / Cadastrar
             </Link>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
-      </nav>
+      </header>
 
-      <main className="pt-20">
-        {/* Hero: Authority & Professionalism */}
-        <section className={`relative py-24 lg:py-40 px-6 overflow-hidden ${
-          isDarkMode ? 'bg-slate-950' : 'bg-[#F8FAFC]'
-        }`}>
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-10">
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border shadow-sm ${
-                isDarkMode ? 'bg-slate-900 border-slate-800 text-blue-400' : 'bg-white border-slate-200 text-slate-900'
-              }`}>
-                <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div> Rede Oficial de Empregos do RN
+      <main>
+        {/* Hero Simples e Direto - Foco em Busca */}
+        <section className="bg-blue-700 py-12 px-4 text-white">
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">Encontre seu novo emprego em Natal e RN</h1>
+            <p className="text-blue-100 mb-8 opacity-90">O maior portal de vagas da capital potiguar</p>
+            
+            <div className="bg-white p-2 rounded-lg shadow-lg flex flex-col md:flex-row gap-2">
+              <div className="flex-1 flex items-center px-4 gap-2 border-b md:border-b-0 md:border-r border-gray-100 py-3 md:py-0">
+                <Search className="text-gray-400 w-5 h-5" />
+                <input type="text" placeholder="Cargo ou palavra-chave" className="w-full text-gray-800 focus:outline-none" />
               </div>
-              <h1 className={`text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9] ${
-                isDarkMode ? 'text-white' : 'text-slate-900'
-              }`}>
-                Talento local, <br />
-                <span className="text-blue-600 italic">verificado.</span>
-              </h1>
-              <p className={`text-xl font-medium leading-relaxed max-w-xl ${
-                isDarkMode ? 'text-slate-400' : 'text-slate-500'
-              }`}>
-                A Natal Vagas Pro conecta as melhores empresas potiguares a profissionais qualificados através de uma plataforma segura e baseada em geolocalização.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/kyc" className="bg-blue-600 text-white px-10 py-5 rounded-[24px] text-lg font-black hover:bg-blue-700 transition-all shadow-2xl flex items-center justify-center gap-3">
-                  CANDIDATAR-SE AGORA <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link href="/postar" className={`px-10 py-5 rounded-[24px] text-lg font-black transition-all flex items-center justify-center gap-3 border-2 ${
-                  isDarkMode ? 'bg-slate-900 border-slate-800 text-white hover:border-blue-600' : 'bg-white border-slate-100 text-slate-900 hover:border-blue-600'
-                }`}>
-                  DIVULGAR VAGA
-                </Link>
+              <div className="flex-1 flex items-center px-4 gap-2 py-3 md:py-0">
+                <MapPin className="text-gray-400 w-5 h-5" />
+                <select className="w-full text-gray-800 focus:outline-none bg-transparent">
+                  <option>Todos os bairros de Natal</option>
+                  <option>Ponta Negra</option>
+                  <option>Tirol</option>
+                  <option>Alecrim</option>
+                  <option>Zona Norte</option>
+                  <option>Grande Natal</option>
+                </select>
               </div>
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-md font-bold hover:bg-blue-800 transition-colors">
+                BUSCAR
+              </button>
+            </div>
+          </div>
+        </section>
 
-              <div className={`flex items-center gap-8 pt-10 border-t ${
-                isDarkMode ? 'border-slate-800' : 'border-slate-200'
-              }`}>
-                <div className="flex flex-col">
-                  <span className="text-3xl font-black tracking-tighter">12.000+</span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Candidatos Reais</span>
-                </div>
-                <div className={`w-px h-12 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-200'}`}></div>
-                <div className="flex flex-col">
-                  <span className="text-3xl font-black tracking-tighter">450+</span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Empresas Verificadas</span>
-                </div>
-                <div className={`w-px h-12 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-200'}`}></div>
-                <div className="flex items-center gap-2">
-                   <div className="bg-green-100 p-2 rounded-lg"><PlayCircle className="w-5 h-5 text-green-600" /></div>
-                   <span className="text-[10px] font-black uppercase tracking-widest leading-none">Vagas<br/>ao vivo</span>
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col lg:flex-row gap-8">
+          {/* Coluna Esquerda: Filtros e Categorias */}
+          <aside className="w-full lg:w-64 space-y-6">
+            <div className="bg-white p-6 rounded-xl border border-gray-200">
+              <h3 className="font-bold text-gray-900 mb-4">Vagas por Categoria</h3>
+              <ul className="space-y-3 text-sm text-gray-600">
+                {['Comércio e Vendas', 'Turismo e Hotelaria', 'Administrativo', 'Tecnologia', 'Saúde'].map(cat => (
+                  <li key={cat} className="flex justify-between hover:text-blue-600 cursor-pointer group">
+                    <span>{cat}</span>
+                    <span className="text-gray-400 group-hover:text-blue-600">(12)</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Banner AdSense Placeholder */}
+            <div className="bg-gray-200 h-64 rounded-xl flex items-center justify-center text-gray-400 text-xs text-center p-4">
+              Publicidade<br/>(Google AdSense)
+            </div>
+          </aside>
+
+          {/* Coluna Central: Lista de Vagas */}
+          <div className="flex-1 space-y-4">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-gray-900 uppercase tracking-wide">Vagas Recentes</h2>
+              <span className="text-sm text-gray-500">Natal/RN</span>
             </div>
 
-            <div className="relative lg:block hidden">
-              <div className={`p-4 rounded-[60px] shadow-3xl border rotate-2 ${
-                isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
-              }`}>
-                <div className="bg-slate-950 aspect-square rounded-[50px] overflow-hidden relative">
-                   <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80')] bg-cover opacity-40"></div>
-                   <div className={`absolute bottom-10 left-10 right-10 p-8 backdrop-blur-xl rounded-[32px] border ${
-                     isDarkMode ? 'bg-slate-900/90 border-slate-700' : 'bg-white/90 border-white/20'
-                   }`}>
-                      <div className="flex items-center gap-4 mb-4">
-                         <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white"><Shield className="w-6 h-6" /></div>
-                         <div>
-                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Tecnologia KYC</p>
-                            <p className={`text-xl font-black ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Perfil 100% Autêntico</p>
-                         </div>
+            {[
+              { title: 'Recepcionista (Pousada)', company: 'Hospedagem Ponta Negra', bairro: 'Ponta Negra', type: 'CLT', salary: 'R$ 1.600,00' },
+              { title: 'Vendedor Externo', company: 'Distribuidora RN', bairro: 'Alecrim', type: 'PJ', salary: 'Comissão' },
+              { title: 'Auxiliar de Cozinha', company: 'Restaurante Sabor Natal', bairro: 'Lagoa Nova', type: 'Temporário', salary: 'R$ 1.500,00' },
+              { title: 'Desenvolvedor Frontend Jr', company: 'Potiguar Tech', bairro: 'Tirol', type: 'Remoto', salary: 'R$ 3.000,00' },
+            ].map((job, i) => (
+              <div key={i} className="bg-white p-5 rounded-xl border border-gray-200 hover:border-blue-400 transition-all shadow-sm group">
+                <div className="flex justify-between items-start">
+                  <div className="flex gap-4">
+                    <div className="w-14 h-14 bg-gray-50 rounded-lg flex items-center justify-center text-blue-600 border border-gray-100 group-hover:bg-blue-50 transition-colors">
+                      <Briefcase className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg text-blue-900 group-hover:text-blue-600 leading-tight">{job.title}</h3>
+                      <p className="text-gray-600 font-medium text-sm">{job.company}</p>
+                      <div className="flex flex-wrap gap-4 mt-2">
+                        <span className="flex items-center gap-1 text-xs text-gray-400 font-bold uppercase"><MapPin className="w-3 h-3 text-blue-500" /> {job.bairro}</span>
+                        <span className="bg-blue-50 text-blue-700 text-[10px] font-black px-2 py-0.5 rounded uppercase">{job.type}</span>
+                        <span className="text-green-600 text-xs font-bold">{job.salary}</span>
                       </div>
-                      <p className="text-sm font-medium text-slate-500">Documentação e Selfie validados por nossa equipe de especialistas.</p>
-                   </div>
+                    </div>
+                  </div>
+                  <button className="bg-gray-100 text-gray-900 px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-600 hover:text-white transition-all">
+                    VER VAGA
+                  </button>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            ))}
 
-        {/* Dynamic Dark/Light Features Section */}
-        <section className={`py-32 px-6 transition-colors ${
-          isDarkMode ? 'bg-slate-950' : 'bg-white'
-        }`}>
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-2xl mb-24">
-              <h2 className="text-5xl font-black tracking-tighter leading-none mb-6">Inovação aplicada à <br/><span className="text-blue-600">realidade de Natal.</span></h2>
-              <p className={`text-lg font-medium ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Não somos apenas um mural de anúncios. Somos a ponte inteligente entre a mão de obra qualificada e o mercado potiguar.</p>
+            <button className="w-full py-4 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 font-bold hover:border-blue-400 hover:text-blue-600 transition-all">
+              Ver mais vagas em Natal...
+            </button>
+          </div>
+
+          {/* Coluna Direita: Vagas Premium / Informativos */}
+          <aside className="w-full lg:w-72 space-y-6">
+            <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+              <h3 className="font-bold text-blue-900 flex items-center gap-2 mb-4"><Zap className="w-4 h-4 fill-current" /> Vagas Premium</h3>
+              <div className="space-y-4">
+                 {[1, 2].map(i => (
+                   <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-blue-100 cursor-pointer hover:shadow-md">
+                      <h4 className="text-sm font-bold text-blue-900 mb-1">Gerente de Vendas</h4>
+                      <p className="text-[10px] font-bold text-gray-400 uppercase">Shopping Midway Mall</p>
+                   </div>
+                 ))}
+              </div>
+              <button className="w-full mt-4 text-xs font-black text-blue-600 uppercase hover:underline">Quero destacar minha vaga</button>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-16">
-              {[
-                { 
-                  icon: <MapPin className="w-12 h-12 text-blue-600" />, 
-                  title: 'Economia de Transporte', 
-                  desc: 'Filtre vagas por bairro (Ponta Negra, Alecrim, Tirol, etc.) e encontre oportunidades perto de casa.' 
-                },
-                { 
-                  icon: <Smartphone className={`w-12 h-12 ${isDarkMode ? 'text-white' : 'text-slate-900'}`} />, 
-                  title: 'Contratação via WhatsApp', 
-                  desc: 'Eliminamos a burocracia. Candidatos qualificados falam direto com o RH via WhatsApp integrado.' 
-                },
-                { 
-                  icon: <Zap className="w-12 h-12 text-orange-600" />, 
-                  title: 'Vagas de Alta Urgência', 
-                  desc: 'Setor de Turismo e Comércio de Natal com vagas para contratação imediata e verificação real.' 
-                }
-              ].map((item, i) => (
-                <div key={i} className="group cursor-default">
-                  <div className={`mb-8 p-6 rounded-[32px] w-fit transition-colors ${
-                    isDarkMode ? 'bg-slate-900 group-hover:bg-blue-900/30' : 'bg-slate-50 group-hover:bg-blue-50'
-                  }`}>{item.icon}</div>
-                  <h3 className="text-2xl font-black mb-4 tracking-tight uppercase">{item.title}</h3>
-                  <p className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} font-medium leading-relaxed`}>{item.desc}</p>
-                </div>
-              ))}
+            <div className="bg-white p-6 rounded-xl border border-gray-200">
+               <h3 className="font-bold text-gray-900 mb-4">Dicas de Carreira</h3>
+               <div className="space-y-4">
+                  <div className="text-sm text-gray-600 hover:text-blue-600 cursor-pointer">Como se sair bem em entrevistas em Natal?</div>
+                  <div className="text-sm text-gray-600 hover:text-blue-600 cursor-pointer">O que colocar no currículo para vagas no comércio?</div>
+               </div>
             </div>
-          </div>
-        </section>
+          </aside>
+        </div>
       </main>
 
-      <footer className={`border-t py-20 px-6 transition-colors ${
-        isDarkMode ? 'bg-slate-950 border-slate-900' : 'bg-white border-slate-100'
-      }`}>
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <div className="bg-blue-600 p-1.5 rounded-lg"><Briefcase className="w-4 h-4 text-white" /></div>
-            <span className={`text-xl font-black tracking-tighter uppercase ${
-              isDarkMode ? 'text-white' : 'text-slate-900'
-            }`}>Natal<span className="text-blue-600">Vagas</span></span>
+      <footer className="bg-white border-t border-gray-200 py-12 px-4 mt-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+          <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-blue-600 p-1 rounded text-white"><Briefcase className="w-5 h-5" /></div>
+              <span className="text-xl font-bold text-blue-900">NATALVAGAS</span>
+            </div>
+            <p className="text-sm text-gray-500 max-w-sm">O portal definitivo para quem busca emprego ou novos talentos no Rio Grande do Norte.</p>
           </div>
-          <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-12">Líder em Empregabilidade no Rio Grande do Norte</p>
+          <div>
+            <h4 className="font-bold text-gray-900 mb-4">Navegação</h4>
+            <ul className="text-sm text-gray-500 space-y-2">
+              <li><Link href="#" className="hover:text-blue-600">Buscar Vagas</Link></li>
+              <li><Link href="/mapa" className="hover:text-blue-600">Mapa GPS</Link></li>
+              <li><Link href="/admin" className="hover:text-blue-600">Para Empresas</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-gray-900 mb-4">Institucional</h4>
+            <ul className="text-sm text-gray-500 space-y-2">
+              <li><Link href="#" className="hover:text-blue-600">Sobre Nós</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Contato</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Termos de Uso</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto pt-8 border-t border-gray-100 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+           © 2026 NATAL VAGAS - TODOS OS DIREITOS RESERVADOS
         </div>
       </footer>
     </div>

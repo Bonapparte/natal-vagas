@@ -39,6 +39,9 @@ You are the Arquiteto-Chefe of Natal Vagas Pro. Follow these 30 protocols to ens
 28. **Referral-Viral-Loop**: Reward system for users sharing jobs on WhatsApp groups.
 29. **Video-Profile-Hosting**: Optimized storage for 30s video resumes.
 30. **Career-Guidance-AI**: Providing automated interview tips based on the job role.
+31. **Visual-Computer-Interface**: Ability to capture and analyze the user's desktop to provide real-time visual assistance.
+32. **Automated-Debugging-Protocol**: Continuous monitoring of browser console and server logs for error resolution.
+33. **Multi-Environment-Sync**: Keeping GitHub, Local, and Supabase in perfect sync.
 
 ## Usage
 When asked to improve the site, refer to these protocols to maintain consistency and professional quality.

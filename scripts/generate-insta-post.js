@@ -1,0 +1,28 @@
+const fs = require('fs');
+
+const jobData = {
+  title: "Vendedor de Loja",
+  company: "Shopping Midway Mall",
+  salary: "R$ 1.600,00",
+  bairro: "Tirol"
+};
+
+const svgContent = `
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1080" fill="#0F172A"/>
+  <circle cx="900" cy="100" r="300" fill="#2563EB" fill-opacity="0.1"/>
+  <text x="100" y="200" fill="#2563EB" font-family="Arial" font-size="40" font-weight="bold">NATAL VAGAS PRO</text>
+  <text x="100" y="400" fill="white" font-family="Arial" font-size="80" font-weight="900">ESTAMOS</text>
+  <text x="100" y="500" fill="#2563EB" font-family="Arial" font-size="120" font-weight="900">CONTRATANDO!</text>
+  
+  <rect x="100" y="650" width="880" height="300" rx="40" fill="#1E293B"/>
+  <text x="150" y="750" fill="white" font-family="Arial" font-size="50" font-weight="bold">${jobData.title}</text>
+  <text x="150" y="820" fill="#94A3B8" font-family="Arial" font-size="30" font-weight="bold">${jobData.company}</text>
+  <text x="150" y="880" fill="#22C55E" font-family="Arial" font-size="40" font-weight="bold">${jobData.salary}</text>
+  
+  <text x="540" y="1020" fill="#64748B" font-family="Arial" font-size="30" text-anchor="middle">www.natalvagas.com.br</text>
+</svg>
+`;
+
+fs.writeFileSync('D:/natal-vagas/public/social-post.svg', svgContent);
+console.log("Post para Instagram gerado com sucesso em public/social-post.svg");

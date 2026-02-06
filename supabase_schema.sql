@@ -38,8 +38,21 @@ CREATE TABLE IF NOT EXISTS public.applications (
   job_id UUID REFERENCES public.jobs ON DELETE CASCADE,
   candidate_id UUID REFERENCES auth.users ON DELETE CASCADE,
   status TEXT CHECK (status IN ('applied', 'reviewing', 'interview', 'hired', 'rejected')) DEFAULT 'applied',
+  notes TEXT,
+  rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+  feedback_candidate TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(job_id, candidate_id)
+);
+
+-- 3.1 Histórico de Status da Candidatura
+CREATE TABLE IF NOT EXISTS public.application_events (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  application_id UUID REFERENCES public.applications ON DELETE CASCADE,
+  status TEXT NOT NULL,
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- 4. Tabela de Documentos KYC (Caminhos no Storage)

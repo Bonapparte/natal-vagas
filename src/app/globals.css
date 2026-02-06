@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom transitions */
+.transition-all {
+  transition-duration: 300ms;
+}
+
+/* Leaflet Popup customization */
+.leaflet-popup-content-wrapper {
+  border-radius: 20px !important;
+  padding: 8px !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1) !important;
+}
+
+.leaflet-popup-tip-container {
+  display: none !important;
+}

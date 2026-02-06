@@ -9,15 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^8.7.0",
+    "@supabase/supabase-js": "latest",
+    "clsx": "latest",
+    "framer-motion": "latest",
+    "leaflet": "latest",
+    "lucide-react": "latest",
     "next": "15.1.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "lucide-react": "latest",
-    "leaflet": "latest",
     "react-leaflet": "latest",
-    "@supabase/supabase-js": "latest",
-    "framer-motion": "latest",
-    "clsx": "latest",
+    "stripe": "^20.3.1",
     "tailwind-merge": "latest"
   },
   "devDependencies": {
